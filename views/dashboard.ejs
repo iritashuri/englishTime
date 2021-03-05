@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+</head>
+<body>
+  <p class="lead mb-3"> <%= user.name %> ברוך הבא</p>
+  <a href="/users/logout" class="btn btn-secondary">התנתק</a>
+  <div class="tree">
+    <ul>
+        <li>
+            <div class="level-1"> <button> Main </button></div>
+            <ul>
+                <li>
+                    <div class="level-2"> <button> level 2 </button></div>
+                    <ul>
+                      <li>
+                          <div class="level-3"> <button> level 3 </button></div>
+                          <ul>
+                            <li>
+                                <div class="level-3"> <button> level 4 </button></div>
+                            </li>
+                            <li>
+                                <div class="level-3"> <button> level 4 </button></div>
+                            </li>
+                        </ul>
+                      </li>
+                      <li>
+                          <div class="level-3"> <button> level 3 </button></div>
+                          <ul>
+                            <li>
+                                <div class="level-3"> <button> level 4 </button></div>
+                            </li>
+                            <li>
+                                <div class="level-3"> <button> level 4 </button></div>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li>
+                    <div class="level-2"><button> level 2 </button></div>
+                    <ul>
+                        <li>
+                            <div class="level-3"> <button> level 3 </button></div>
+                            <ul>
+                              <li>
+                                  <div class="level-3"> <button> level 4 </button></div>
+                              </li>
+                              <li>
+                                  <div class="level-3"> <button> level 4 </button></div>
+                              </li>
+                          </ul>
+                        </li>
+                        <li>
+                            <div class="level-3"> <button> level 3 </button></div>
+                            <ul>
+                              <li>
+                                  <div class="level-3"> <button> level 4 </button></div>
+                              </li>
+                              <li>
+                                  <div class="level-3"> <button> level 4 </button></div>
+                              </li>
+                          </ul>
+                        </li>
+                    </ul>  
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+
+</div>
+  </body>
+</html>
