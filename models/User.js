@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Word = require('./Word');
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -16,6 +17,14 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    words: {
+        type: Map,
+        // of: Array,
+        default: {
+            a1: [],
+            a2: []
+        }
     }
 });
 
