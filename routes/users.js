@@ -56,36 +56,40 @@ router.post('/register', (req, res) => {
                         password2
                     });
                 } else {
-                    // New user
-                    const newUser = new User({
-                        name,
-                        email,
-                        password
-                    });
-                    // Insert words
-                    Word.find({ "level": "A1" }).then((a1) => {
-                        newUser.words['a1'] = a1;
-                    })
-                    // getWords = () => {
-                    //     newUser.words = {
-                    //         a1: a1,
-                    //         a2: a2
-                    //     }
-                    // }
-                    // Hash password
-                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        // Set password to hashed
-                        newUser.password = hash;
+                    Word.find({ "level": "A1" }, (err, words) => {
+                        const wordsList = [];
+                        if (err) { console.log(err) }
+                        else {
+                            words.forEach(word => { wordsList.push(word); });
+                        }
 
-                        // Save user
-                        newUser.save()
-                            .then(user => {
-                                req.flash('success_msg', 'נרשמת בהצלחה , אנא התחבר');
-                                res.redirect('/users/login');
-                            })
-                            .catch(err => console.log(err));
-                    }));
+
+                        // New user
+                        const newUser = new User({
+                            name,
+                            email,
+                            password,
+                            words: {
+                                not_studied: wordsList,
+                                known: [],
+                                unknown: []
+                            }
+                        });
+                        // Hash password
+                        bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            // Set password to hashed
+                            newUser.password = hash;
+                            //newUser.words['not_studied'] = wordsList;
+                            // Save user
+                            newUser.save()
+                                .then(user => {
+                                    req.flash('success_msg', 'נרשמת בהצלחה , אנא התחבר');
+                                    res.redirect('/users/login');
+                                })
+                                .catch(err => console.log(err));
+                        }));
+                    });
                 }
             });
     }

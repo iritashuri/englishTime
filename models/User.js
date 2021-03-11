@@ -14,17 +14,13 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    words: {
+        type: Map,
+        of: Array,
+    },
     date: {
         type: Date,
         default: Date.now
-    },
-    words: {
-        type: Map,
-        // of: Array,
-        default: {
-            a1: [],
-            a2: []
-        }
     }
 });
 
