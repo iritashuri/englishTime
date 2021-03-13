@@ -1,3 +1,16 @@
+user = JSON.parse(user);
+if (user.level == "A1") {
+    start("level1");
+}
+else
+    start("level2");
+
+
+function start(level) {
+    document.getElementById(level).style.display = "block";
+    document.getElementById(user.level).className = document.getElementById(user.level).className + " active";
+}
+
 function openLevels(evt, level) {
     // Declare all variables
     let i, tabcontent, tablinks;

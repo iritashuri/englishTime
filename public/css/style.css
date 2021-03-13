@@ -25,10 +25,9 @@ body {
   font-family: "Asakim", serif;
 }
 
-/* Style the tab content */
+/* Tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
 }
 
 /* Tree */

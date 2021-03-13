@@ -26,16 +26,14 @@
                     </div>
                 </li>
                 <li class="nav-item tablinks">
-                    <a class="nav-link" href="#level1" onclick="openLevels(event, 'level1')">שלב 1</a>
+                    <a class="nav-link" href="#level1" id="A1" onclick="openLevels(event, 'level1')">שלב 1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#level1" onclick="openLevels(event, 'level2')">שלב 2</a>
+                    <a class="nav-link" href="#level1" id="A2" onclick="openLevels(event, 'level2')">שלב 2</a>
                 </li>
             </ul>
         </div>
     </nav>
-
-
     <div class="welcome-user">
         <p> ברוך הבא</p>
     </div>
@@ -121,6 +119,11 @@
         </div>
 
     </div>
+
+    <script>
+        var user = '<%- JSON.stringify(user) %>';
+    </script>
+
 </body>
 
 </html>

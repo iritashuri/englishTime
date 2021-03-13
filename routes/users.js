@@ -69,11 +69,12 @@ router.post('/register', (req, res) => {
                             name,
                             email,
                             password,
+                            level: "A1",
                             words: {
                                 not_studied: wordsList,
                                 known: [],
                                 unknown: []
-                            }
+                            },
                         });
                         // Hash password
                         bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
