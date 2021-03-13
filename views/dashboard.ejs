@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link href='http://serve.fontsproject.com/css?family=Asakim:700' rel='stylesheet' type='text/css'>
+    <link href='http://serve.fontsproject.com/css?family=Noot:400' rel='stylesheet' type='text/css'>
+    <link href='http://serve.fontsproject.com/css?family=Alef:700' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light top-bar">
+<body id="dashboard">
+    <nav class="top-bar navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle user-name" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%= user.name %>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -31,21 +33,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#level1" id="A2" onclick="openLevels(event, 'level2')">שלב 2</a>
                 </li>
+                <li class="logo">
+                    <h1>זמן אנגלית</h1>
+                </li>
+
             </ul>
         </div>
     </nav>
-    <div class="welcome-user">
-        <p> ברוך הבא</p>
-    </div>
-
 
     <!-- level1 content -->
     <div id="level1" class="tabcontent">
-        <h3>Level1</h3>
+        <h3 class="level">שלב ראשון</h3>
         <div class="tree">
             <ul>
                 <li>
-                    <div class="level-1"> <button> אישיות </button></div>
+                    <div class="level-1 step-1"> <button> אישיות </button></div>
                     <ul>
                         <li>
                             <div class="level-2"> <button> חיות </button></div>
@@ -65,28 +67,23 @@
                                     <div class="level-3"> <button> חינוך </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> something </button></div>
+                                    <div class="level-3"> <button> פעולות </button></div>
 
                                 </li>
                             </ul>
                         </li>
                     </ul>
-
                 </li>
             </ul>
-
         </div>
-
     </div>
-
-
     <!-- level2 content -->
     <div id="level2" class="tabcontent">
-        <h3>Level2</h3>
+        <h3 class="level">שלב שני</h3>
         <div class="tree">
             <ul>
                 <li>
-                    <div class="level-1"> <button> אישיות </button></div>
+                    <div class="level-1 step-1"> <button> אישיות </button></div>
                     <ul>
                         <li>
                             <div class="level-2"> <button> חיות </button></div>
@@ -106,19 +103,17 @@
                                     <div class="level-3"> <button> חינוך </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> something </button></div>
+                                    <div class="level-3"> <button> פעולות </button></div>
 
                                 </li>
                             </ul>
                         </li>
                     </ul>
-
                 </li>
             </ul>
-
         </div>
-
     </div>
+
 
     <script>
         var user = '<%- JSON.stringify(user) %>';
