@@ -1,9 +1,11 @@
 user = JSON.parse(user);
+var category;
 if (user.level == "A1") {
     start("level1");
 }
 else
     start("level2");
+document.getElementById("popover-content").hidden = true;
 
 
 function start(level) {
@@ -31,4 +33,28 @@ function openLevels(evt, level) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(level).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+
+
+// function openCategory(evt, openCategory) {
+//     let popup = document.getElementById("popup");
+//     popup.classList.toggle("show");
+// }
+
+$('.popover-dismiss').popover({
+    trigger: 'focus'
+})
+
+$("[data-toggle=popover]").popover({
+    html: true,
+    content: function () {
+        return $('#popover-content').html();
+    }
+});
+
+
+function saveCategory(cat) {
+    category = cat;
+    console.log(category);
 }

@@ -47,28 +47,33 @@
         <div class="tree">
             <ul>
                 <li>
-                    <div class="level-1 step-1"> <button> אישיות </button></div>
+                    <div class="level-1 step-1">
+                        <button tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus"
+                            data-html="true" data-container="body" data-placement="left" id="personality"
+                            onclick="saveCategory(id)">
+                            אישיות
+                        </button>
+                    </div>
                     <ul>
                         <li>
-                            <div class="level-2"> <button> חיות </button></div>
+                            <div class="level-2" id="animals"> <button> חיות </button></div>
                             <ul>
                                 <li>
-                                    <div class="level-3"> <button> בגדים </button></div>
+                                    <div class="level-3" id="clothes"> <button> בגדים </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> טבע </button></div>
+                                    <div class="level-3" id="nature"> <button> טבע </button></div>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <div class="level-2"><button> אוכל </button></div>
+                            <div class="level-2" id="food"><button> אוכל </button></div>
                             <ul>
                                 <li>
-                                    <div class="level-3"> <button> חינוך </button></div>
+                                    <div class="level-3" id="education"> <button> חינוך </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> פעולות </button></div>
-
+                                    <div class="level-3" id="actions"> <button> פעולות </button></div>
                                 </li>
                             </ul>
                         </li>
@@ -83,27 +88,27 @@
         <div class="tree">
             <ul>
                 <li>
-                    <div class="level-1 step-1"> <button> אישיות </button></div>
+                    <div class="level-1 step-1" id="personality"> <button> אישיות </button></div>
                     <ul>
                         <li>
-                            <div class="level-2"> <button> חיות </button></div>
+                            <div class="level-2" id="animals"> <button> חיות </button></div>
                             <ul>
                                 <li>
-                                    <div class="level-3"> <button> בגדים </button></div>
+                                    <div class="level-3" id="clothes"> <button> בגדים </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> טבע </button></div>
+                                    <div class="level-3" id="nature"> <button> טבע </button></div>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <div class="level-2"><button> אוכל </button></div>
+                            <div class="level-2" id="food"><button> אוכל </button></div>
                             <ul>
                                 <li>
-                                    <div class="level-3"> <button> חינוך </button></div>
+                                    <div class="level-3" id="education"><button> חינוך </button></div>
                                 </li>
                                 <li>
-                                    <div class="level-3"> <button> פעולות </button></div>
+                                    <div class="level-3" id="actions"> <button> פעולות </button></div>
 
                                 </li>
                             </ul>
@@ -114,11 +119,16 @@
         </div>
     </div>
 
+    <div id="popover-content" class="hide">
+        <button>כרטיסיות לימוד</button></br></br>
+        <button>משחק 1</button></br></br>
+        <button>משחק 2</button>
+    </div>
+
 
     <script>
         var user = '<%- JSON.stringify(user) %>';
     </script>
-
 </body>
 
 </html>
