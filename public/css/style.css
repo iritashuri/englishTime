@@ -11,6 +11,8 @@ body {
   text-align: right;
   top: 0; /* Position the navbar at the top of the page */
   background-color: rgb(6, 245, 225);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px cadetblue;
 }
 
 #navbarNavDropdown {
