@@ -1,15 +1,45 @@
+body {
+  background-color: aquamarine;
+}
+
+/* Top bar */
+.top-bar {
+  text-align: right;
+}
+
+#navbarNavDropdown {
+  direction: rtl;
+}
+
+.my-item {
+  float: right;
+  text-align: right;
+  position: static;
+  margin-left: 90px;
+}
+
+.welcome-user {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 40px;
+  font-family: "Asakim", serif;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
+/* Tree */
 .tree {
-  margin: 0;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 .tree ul {
   padding-top: 20px;
   position: relative;
-
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -33,14 +63,14 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #4caf50;
   width: 50%;
   height: 20px;
 }
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 2px solid #4caf50;
 }
 
 .tree li:only-child::after,
@@ -57,7 +87,7 @@
   border: 0 none;
 }
 .tree li:last-child::before {
-  border-right: 1px solid #ccc;
+  border-right: 2px solid #4caf50;
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
@@ -72,12 +102,12 @@
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 2px solid #4caf50;
   width: 0;
   height: 20px;
 }
 .tree li div {
-  border: 1px solid #ccc;
+  border: 2px solid #4caf50;
   padding: 5px 10px;
   text-decoration: none;
   color: #666;
@@ -92,4 +122,32 @@
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
 }
