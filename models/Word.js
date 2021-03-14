@@ -12,6 +12,10 @@ const WordSchema = new mongoose.Schema({
     catagory: {
         type: String,
         required: true
+    },
+    translation:{
+        type: String,
+        required: true
     }
 });
 
