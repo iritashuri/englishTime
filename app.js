@@ -7,6 +7,7 @@ const session = require('express-session');
 
 const app = express();
 
+
 // Passport config
 require('./config/passport')(passport);
 
@@ -58,6 +59,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/', require('./routes/study_cards'));
 
 const PORT =  process.env.PORT || 5000;
 
