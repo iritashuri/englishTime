@@ -21,7 +21,7 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%= user.name %>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item  my-item" href="#">פרטי משתמש</a>
                         <a class="dropdown-item my-item" href="/users/logout">התנתק</a>
                         <a class="dropdown-item my-item" href="#">Something else here</a>
@@ -56,10 +56,15 @@
                     </div>
                     <ul>
                         <li>
-                            <div class="level-2" id="animals"> <button> חיות </button></div>
+                            <div class="level-2"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
+                                    data-trigger="focus" data-html="true" data-container="body" data-placement="left"
+                                    id="animals" onclick="saveCategory(id)"> חיות </button></div>
                             <ul>
                                 <li>
-                                    <div class="level-3" id="clothes"> <button> בגדים </button></div>
+                                    <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                            data-toggle="popover" data-trigger="focus" data-html="true"
+                                            data-container="body" data-placement="left" id="clothes"
+                                            onclick="saveCategory(id)"> בגדים </button></div>
                                 </li>
                                 <li>
                                     <div class="level-3" id="nature"> <button> טבע </button></div>
@@ -121,7 +126,7 @@
 
     <div id="popover-content" class="hide">
         <form action="/games/cards" method="POST">
-            <input id="cards-category" type="hidden" value="">
+            <input id="cards-category" name="category" type="hidden" value="">
             <button type="submit">כרטיסיות לימוד</button></br></br>
         </form>
         <button>משחק 1</button></br></br>
