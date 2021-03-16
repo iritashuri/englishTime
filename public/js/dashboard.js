@@ -1,12 +1,26 @@
-user = JSON.parse(user);
 var category;
-if (user.level == "A1") {
-    start("level1");
-}
-else
-    start("level2");
-document.getElementById("popover-content").hidden = true;
 
+if (document.URL.includes('dashboard')) {
+    if (user && user.length != 0) {
+        user = JSON.parse(user);
+        if (user.level == "A1")
+            start("level1");
+        else
+            start("level2");
+    }
+    document.getElementById("popover-content").hidden = true;
+
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+    })
+
+    $("[data-toggle=popover]").popover({
+        html: true,
+        content: function () {
+            return $('#popover-content').html();
+        }
+    });
+}
 
 function start(level) {
     document.getElementById(level).style.display = "block";
@@ -37,24 +51,27 @@ function openLevels(evt, level) {
 
 
 
-// function openCategory(evt, openCategory) {
-//     let popup = document.getElementById("popup");
-//     popup.classList.toggle("show");
-// }
-
-$('.popover-dismiss').popover({
-    trigger: 'focus'
-})
-
-$("[data-toggle=popover]").popover({
-    html: true,
-    content: function () {
-        return $('#popover-content').html();
-    }
-});
-
 
 function saveCategory(cat) {
+    document.getElementById('cards-category').value = cat;
     category = cat;
-    console.log(category);
+    //jQuery('#cards-category').val(cat);
+    //console.log(category);
+    //document.getElementById('cards-category').setAttribute('value', cat);
 }
+
+
+function openSnake(category) {
+
+}
+
+function openCards() {
+    if (category) {
+        console.log(category);
+        return category;
+    } else {
+        console.log("no category")
+    }
+}
+
+function openCardsGame(category) { }

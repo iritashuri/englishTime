@@ -120,7 +120,10 @@
     </div>
 
     <div id="popover-content" class="hide">
-        <button>כרטיסיות לימוד</button></br></br>
+        <form action="/games/cards" method="POST">
+            <input id="cards-category" type="hidden" value="">
+            <button type="submit">כרטיסיות לימוד</button></br></br>
+        </form>
         <button>משחק 1</button></br></br>
         <button>משחק 2</button>
     </div>
