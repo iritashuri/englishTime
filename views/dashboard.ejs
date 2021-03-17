@@ -143,10 +143,15 @@
         <input id="cards-category" name="category" type="hidden" value="">
         <button type="submit">כרטיסיות לימוד</button></br></br>
     </form>
-    <button>משחק 1</button></br></br>
-    <button>משחק 2</button>
+    <form action="/games/snake" method="POST">
+        <input id="snake-category" name="category" type="hidden" value="">
+        <button type="submit">משחק 1</button></br></br>
+    </form>
+    <form action="/games/card-game" method="POST">
+        <input id="card-game-category" name="category" type="hidden" value="">
+        <button type="submit">משחק 2</button></br></br>
+    </form>
 </div>
-
 
 <script>
     var user = '<%- JSON.stringify(user) %>';

@@ -52,6 +52,8 @@ function openLevels(evt, level) {
 
 function saveCategory(cat) {
     document.getElementsByClassName('popover-body')[0].children[0].children[0].value = cat
+    document.getElementsByClassName('popover-body')[0].children[1].children[0].value = cat
+    document.getElementsByClassName('popover-body')[0].children[2].children[0].value = cat
 }
 
 
