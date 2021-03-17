@@ -20,14 +20,16 @@ if (document.URL.includes('dashboard')) {
             return $('#popover-content').html();
         }
     });
+
+
 }
 
-start = (level) => {
+function start(level) {
     document.getElementById(level).style.display = "block";
     document.getElementById(user.level).className = document.getElementById(user.level).className + " active";
 }
 
-openLevels = (evt, level) => {
+function openLevels(evt, level) {
     // Declare all variables
     let i, tabcontent, tablinks;
 
@@ -52,7 +54,7 @@ openLevels = (evt, level) => {
 
 
 
-saveCategory = (cat) => {
+function saveCategory(cat) {
     document.getElementById('cards-category').value = cat;
     category = cat;
     //jQuery('#cards-category').val(cat);
@@ -61,7 +63,11 @@ saveCategory = (cat) => {
 }
 
 
-openCards = () => {
+function openSnake(category) {
+
+}
+
+function openCards() {
     if (category) {
         console.log(category);
         return category;
@@ -69,3 +75,5 @@ openCards = () => {
         console.log("no category")
     }
 }
+
+function openCardsGame(category) { }
