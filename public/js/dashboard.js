@@ -22,12 +22,12 @@ if (document.URL.includes('dashboard')) {
     });
 }
 
-function start(level) {
+start = (level) => {
     document.getElementById(level).style.display = "block";
     document.getElementById(user.level).className = document.getElementById(user.level).className + " active";
 }
 
-function openLevels(evt, level) {
+openLevels = (evt, level) => {
     // Declare all variables
     let i, tabcontent, tablinks;
 
@@ -52,7 +52,7 @@ function openLevels(evt, level) {
 
 
 
-function saveCategory(cat) {
+saveCategory = (cat) => {
     document.getElementById('cards-category').value = cat;
     category = cat;
     //jQuery('#cards-category').val(cat);
@@ -61,11 +61,7 @@ function saveCategory(cat) {
 }
 
 
-function openSnake(category) {
-
-}
-
-function openCards() {
+openCards = () => {
     if (category) {
         console.log(category);
         return category;
@@ -73,5 +69,3 @@ function openCards() {
         console.log("no category")
     }
 }
-
-function openCardsGame(category) { }
