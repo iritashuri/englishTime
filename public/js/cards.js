@@ -36,7 +36,7 @@ if (document.URL.includes('cards')) {
   function display_card(){
     var word_text = document.createTextNode(card_words[counter]['word']);
     var translation_text = document.createTextNode(card_words[counter]['translation']);
-    var back_card = document.getElementById("back_card");
+    var back_card = document.getElementById("headline-back");
     var front_card = document.getElementById("headline-front");
     front_card.innerHTML = '';
     back_card.innerHTML = '';

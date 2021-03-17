@@ -1,10 +1,27 @@
+
+.container { 
+    height: 200px;
+    position: relative;
+    top: 60%;
+
+
+  }
+  
 .flip-card {
     background-color: transparent;
     width: 300px;
-    height: 200px;
+    height: 150px;
     border-radius: 5px; /* 5px rounded corners */
-    border: 1px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    
+    margin: 0;
+    position: relative;
+    top: 150%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+
   }
 
 
@@ -39,15 +56,50 @@
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-color:  dodgerblue;
+    background-color:  rgb(73, 155, 236);
     color: black;
+
   }
+
   
   /* Style the back side */
   .flip-card-back {
-    background-color: dodgerblue;
+    background-color:  rgb(73, 155, 236);
     color: white;
     transform: rotateY(180deg);
     border-radius: 10px; /* 5px rounded corners */
 
   }
+
+
+
+.img{
+    position: absolute;
+    left: 45%;
+    top: 210%;
+    width: 8%;
+    height: 35%;
+
+
+}
+
+.prev{
+    position: absolute;
+    left: 30%;
+    top: 150%;
+    width: 5%;
+    height: 25%;
+    background-color: transparent;
+
+
+}
+
+.next{
+    position: absolute;
+    left:65%;
+    top: 150%;
+    width: 5%;
+    height: 25%;
+
+
+}
