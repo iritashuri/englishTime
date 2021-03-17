@@ -15,4 +15,12 @@ router.post('/cards', ensureAuthenticated, (req, res, next) =>
         category: req.body.category
     })
 );
+
+
+router.get('/cards', ensureAuthenticated, (req, res, next) =>
+    res.render('cards', {
+        user: req.user,
+        category: req.body.category
+    })
+);
 module.exports = router;

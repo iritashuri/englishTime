@@ -8,6 +8,7 @@ if (document.URL.includes('dashboard')) {
         else
             start("level2");
     }
+
     document.getElementById("popover-content").hidden = true;
 
     $('.popover-dismiss').popover({
@@ -20,8 +21,6 @@ if (document.URL.includes('dashboard')) {
             return $('#popover-content').html();
         }
     });
-
-
 }
 
 function start(level) {
@@ -51,15 +50,8 @@ function openLevels(evt, level) {
     evt.currentTarget.className += " active";
 }
 
-
-
-
 function saveCategory(cat) {
-    document.getElementById('cards-category').value = cat;
-    category = cat;
-    //jQuery('#cards-category').val(cat);
-    //console.log(category);
-    //document.getElementById('cards-category').setAttribute('value', cat);
+    document.getElementsByClassName('popover-body')[0].children[0].children[0].value = cat
 }
 
 
