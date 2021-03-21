@@ -1,7 +1,9 @@
-hello
-<%= user.name %>
-    <%= category %>
-        <script>
-            var user = '<%- JSON.stringify(user) %>';
-            var category = '<%- category %>';
-        </script>
+<div id="game-board">
+</div>
+
+<script>
+    var user = '<%- JSON.stringify(user) %>';
+    var category = '<%- category %>';
+</script>
+<script type="module" src="/js/snake/game.js"></script>
+<link rel='stylesheet' type='text/css' media='screen' href='/css/snake.css'>
