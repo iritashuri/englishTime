@@ -41,7 +41,7 @@ router.get('/snake', ensureAuthenticated, (req, res, next) =>
     })
 );
 
-// Cards gmae
+// Cards game
 router.post('/card-game', ensureAuthenticated, (req, res, next) =>
     res.render('card-game', {
         user: req.user,

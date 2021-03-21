@@ -3,7 +3,7 @@ body {
 }
 
 #dashboard {
-  background-image: url("dashboard-background.jpg");
+  background-image: url("/img/dashboard-background.jpg");
 }
 
 /* Top bar */
