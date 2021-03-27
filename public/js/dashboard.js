@@ -21,6 +21,7 @@ if (document.URL.includes('dashboard')) {
             return $('#popover-content').html();
         }
     });
+    localStorage.setItem("current_user", JSON.stringify(user));
 }
 
 function start(level) {
@@ -50,10 +51,12 @@ function openLevels(evt, level) {
     evt.currentTarget.className += " active";
 }
 
-function saveCategory(cat) {
-    document.getElementsByClassName('popover-body')[0].children[0].children[0].value = cat
-    document.getElementsByClassName('popover-body')[0].children[1].children[0].value = cat
-    document.getElementsByClassName('popover-body')[0].children[2].children[0].value = cat
+function saveCategory(category) {
+    document.getElementsByClassName('popover-body')[0].children[0].children[0].value = category;
+    document.getElementsByClassName('popover-body')[0].children[1].children[0].value = category;
+    document.getElementsByClassName('popover-body')[0].children[2].children[0].value = category;
+    localStorage.setItem('category', category)
+
 }
 
 
