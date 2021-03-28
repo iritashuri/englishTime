@@ -1,9 +1,46 @@
-<div id="game-board">
-</div>
+<table>
+    <tr id="game-page">
+        <td>
+            <div id="game-board">
+            </div>
+        </td>
+        <td id="other">
+            <div>
+                <div id="heart-rate"></div>
+                <button id="instructions" class="collapsible">הוראות</button>
+                <div class="content">
+                    <p>
+                        כדי להתחיל יש להגיע לנקודה שמעל הדגל
+                    </p>
+                    <p>
+                        עלייך לאכול רק את המילה המושמעת
+
+                    </p>
+                    <p>
+                        אכילה מתבעצת על ידי הגעה לנקודה שמעל המילה
+                    </p>
+                    <p>
+                        אם תוכל מילה שלא הושמעה - לב אחד ירד
+
+                    </p>
+                    <p>
+                        אם תגיע לאפס לבבות, הנחש יצא מתחומו או שהנחש יאכל את עצמו, המשחק יגמר.
+
+                    </p>
+                    <p>
+                        בכדי להתחיל משחק חדש רענן את העמוד.
+                    </p>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
 
 <script>
     var user = '<%- JSON.stringify(user) %>';
     var category = '<%- category %>';
 </script>
 <script type="module" src="/js/snake/game.js"></script>
+<script type="module" src="/js/snake/game-page.js"></script>
 <link rel='stylesheet' type='text/css' media='screen' href='/css/snake.css'>
