@@ -22,7 +22,7 @@ let wordsLen = 0;
 let demoFoodWordsLen = 0;
 var msg = new SpeechSynthesisUtterance();
 let no_known_words = false;
-
+let first_step = localStorage.getItem('first_step');
 
 
 
@@ -39,6 +39,11 @@ export function update(words, knownWords) {
         while (demoFoodRandomNum2 === demoFoodRandomNum || demoFoodRandomNum2 === randomNum)
             demoFoodRandomNum2 = getRandomNum(wordsLen);
 
+
+        console.log(first_step);
+
+        first_step = false;
+        localStorage.setItem('first_step', first_step);
         // speak 
         msg.text = words[randomNum].word;
         window.speechSynthesis.speak(msg);
@@ -59,43 +64,15 @@ export function draw(gameBoard, notStudiedWords, unknownWords, knownWords) {
     wordsLen = foodWords.length;
     demoFoodWordsLen = demoFoodWords.length;
 
-    createFoodElement(gameBoard, food, foodWords, randomNum)
-
-    // const foodElement = document.createElement('div');
-    // foodElement.style.gridRowStart = food.y;
-    // foodElement.style.gridColumnStart = food.x;
-    // foodElement.classList.add('food');
-    // foodElement.innerHTML = foodWords[randomNum].translation;
-    // gameBoard.appendChild(foodElement);
-    /*------------------------------------------*/
-
-    // if (knownWords.length === 0) {
-    //     knownWords = notStudiedWords;
-    //     no_known_words = true;
-    // }
-
-    createFoodElement(gameBoard, demoFood, demoFoodWords, demoFoodRandomNum);
-
-
-    // const demoFoodElement = document.createElement('div');
-    // demoFoodElement.style.gridRowStart = demoFood.y;
-    // demoFoodElement.style.gridColumnStart = demoFood.x;
-    // demoFoodElement.classList.add('food');
-    // demoFoodElement.innerHTML = demoFoodWords[demoFoodRandomNum].translation;
-    // gameBoard.appendChild(demoFoodElement);
-
-    /*------------------------------------*/
-
-    createFoodElement(gameBoard, demoFood2, demoFoodWords, demoFoodRandomNum2);
-
-    // const demoFoodElement2 = document.createElement('div');
-    // demoFoodElement2.style.gridRowStart = demoFood2.y;
-    // demoFoodElement2.style.gridColumnStart = demoFood2.x;
-    // demoFoodElement2.classList.add('food');
-    // demoFoodElement2.innerHTML = demoFoodWords[demoFoodRandomNum2].translation;
-    // gameBoard.appendChild(demoFoodElement2);
+    if (first_step) {
+        createFoodElement(gameBoard, food, "<img src='/img/start.png'>");
+    }
+    else {
+        createFoodElement(gameBoard, food, foodWords[randomNum].translation);
+        createFoodElement(gameBoard, demoFood, demoFoodWords[demoFoodRandomNum].translation);
+        createFoodElement(gameBoard, demoFood2, demoFoodWords[demoFoodRandomNum2].translation);
+    }
 }
-
 
 function getRandomNum(len) {
     return Math.floor(Math.random() * Math.floor(len));
@@ -109,11 +86,12 @@ function getRandomFoodPosition() {
     return newFoodPosition;
 }
 
-function createFoodElement(gameBoard, foodPos, foodWordsArray, randNum) {
+function createFoodElement(gameBoard, foodPos, wordInnerHtml) {
     const foodElement = document.createElement('div');
     foodElement.style.gridRowStart = foodPos.y;
     foodElement.style.gridColumnStart = foodPos.x;
     foodElement.classList.add('food');
-    foodElement.innerHTML = foodWordsArray[randNum].translation;
+    foodElement.innerHTML = "<img src='/img/dot.png'><br>";
+    foodElement.innerHTML += wordInnerHtml;
     gameBoard.appendChild(foodElement);
 }

@@ -15,7 +15,8 @@ let allWords = [];
 let categoryNotStudiedWords = [];
 let categoryKnownWords = [];
 let categoryUnknownWords = [];
-
+let first_step = true;
+localStorage.setItem('first_step', first_step);
 
 // Find all words in the same category and level
 getCategoryWords('not_studied', categoryNotStudiedWords);
@@ -49,7 +50,7 @@ function update() {
 function draw() {
     gameBoard.innerHTML = ''
     drawSnake(gameBoard);
-    drawFood(gameBoard, categoryNotStudiedWords, categoryUnknownWords, categoryKnownWords)
+    drawFood(gameBoard, categoryNotStudiedWords, categoryUnknownWords, categoryKnownWords);
 }
 
 
