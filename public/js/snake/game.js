@@ -49,7 +49,7 @@ function update() {
 function draw() {
     gameBoard.innerHTML = ''
     drawSnake(gameBoard);
-    drawFood(gameBoard, categoryNotStudiedWords, categoryKnownWords)
+    drawFood(gameBoard, categoryNotStudiedWords, categoryUnknownWords, categoryKnownWords)
 }
 
 
