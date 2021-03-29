@@ -4,6 +4,7 @@ user = JSON.parse(user);
 import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, snakeIntersection } from './snake.js';
 import { update as updateFood, draw as drawFood } from './food.js';
 import { outsideGrid } from './grid.js'
+import { drowHearts } from './game-page.js'
 
 // export const currentUser = JSON.parse(user);
 // export const currentCategory = category;
@@ -15,16 +16,37 @@ let allWords = [];
 let categoryNotStudiedWords = [];
 let categoryKnownWords = [];
 let categoryUnknownWords = [];
-let first_step = true;
-localStorage.setItem('first_step', first_step);
+let firstStep = true;
+localStorage.setItem('first_step', firstStep);
+let heartRate = 3;
+localStorage.setItem('heart_rate', heartRate);
+let gameOverSound = new Audio('/sounds/game-over.wav');
+
+
 
 // Find all words in the same category and level
 getCategoryWords('not_studied', categoryNotStudiedWords);
 getCategoryWords('unknown', categoryUnknownWords);
 getCategoryWords('known', categoryKnownWords);
 
+document.getElementById("speaker").addEventListener("click", function () {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = localStorage.getItem('current_word');
+    window.speechSynthesis.speak(msg);
+});
+
+
+document.body.onkeyup = (e) => {
+    if (e.keyCode == 32) {
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = localStorage.getItem('current_word');
+        window.speechSynthesis.speak(msg);
+    }
+}
+
 function main(currentTime) {
     if (gameOver) {
+        setTimeout(gameOverSound.play(), 200000);
         if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {
             window.location = '/games/snake';
         }
@@ -45,17 +67,19 @@ function update() {
     updateSnake();
     updateFood(categoryNotStudiedWords, categoryKnownWords);
     checkForDeath();
+    heartRate = localStorage.getItem('heart_rate');
 }
 
 function draw() {
     gameBoard.innerHTML = ''
     drawSnake(gameBoard);
     drawFood(gameBoard, categoryNotStudiedWords, categoryUnknownWords, categoryKnownWords);
+    drowHearts(heartRate);
 }
 
 
 function checkForDeath() {
-    gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+    gameOver = outsideGrid(getSnakeHead()) || snakeIntersection() || localStorage.getItem('heart_rate') == 0;
 }
 
 function getCategoryWords(type, aarray) {
@@ -66,6 +90,5 @@ function getCategoryWords(type, aarray) {
             aarray.push(word);
     });
 }
-
 
 

@@ -60,3 +60,10 @@ body {
   width: 32px;
   height: 32px;
 }
+
+#speaker {
+  width: 100px;
+  height: 100px;
+  margin-top: 200px;
+  margin-right: 70px;
+}

@@ -1,4 +1,4 @@
-import { onSnake, expandSnake } from './snake.js';
+import { onSnake, expandSnake, onSnake2 } from './snake.js';
 import { randomGridPosion } from './grid.js'
 //import { currentUser as user , currentCategory } from './game.js'
 
@@ -20,9 +20,11 @@ let demoFoodRandomNum = 1;
 let demoFoodRandomNum2 = 2;
 let wordsLen = 0;
 let demoFoodWordsLen = 0;
-var msg = new SpeechSynthesisUtterance();
+let msg = new SpeechSynthesisUtterance();
 let no_known_words = false;
 let first_step = localStorage.getItem('first_step');
+
+let failSound = new Audio('/sounds/fail.wav');
 
 
 
@@ -50,7 +52,8 @@ export function update(words, knownWords) {
         food = getRandomFoodPosition();
     }
     else {
-        if (onSnake(demoFood) || onSnake(demoFood2)) {
+        if (onSnake2(demoFood) || onSnake2(demoFood2)) {
+            setTimeout(updateHeartRate(), 200000);
             // make a message
             // hart rate goes down in one
             // word countdown --
@@ -69,6 +72,7 @@ export function draw(gameBoard, notStudiedWords, unknownWords, knownWords) {
     }
     else {
         createFoodElement(gameBoard, food, foodWords[randomNum].translation);
+        localStorage.setItem('current_word', foodWords[randomNum].word);
         createFoodElement(gameBoard, demoFood, demoFoodWords[demoFoodRandomNum].translation);
         createFoodElement(gameBoard, demoFood2, demoFoodWords[demoFoodRandomNum2].translation);
     }
@@ -94,4 +98,13 @@ function createFoodElement(gameBoard, foodPos, wordInnerHtml) {
     foodElement.innerHTML = "<img src='/img/dot.png'><br>";
     foodElement.innerHTML += wordInnerHtml;
     gameBoard.appendChild(foodElement);
+}
+
+function updateHeartRate() {
+    let heart_rate = localStorage.getItem('heart_rate');
+    heart_rate--;
+    localStorage.setItem('heart_rate', heart_rate);
+    if (heart_rate != 0)
+        failSound.play();
+
 }
