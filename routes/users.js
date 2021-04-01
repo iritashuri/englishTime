@@ -56,11 +56,16 @@ router.post('/register', (req, res) => {
                         password2
                     });
                 } else {
-                    Word.find({ "level": "A1" }, (err, words) => {
+                    Word.find((err, words) => {
                         const wordsList = [];
                         if (err) { console.log(err) }
                         else {
-                            words.forEach(word => { wordsList.push(word); });
+                            words.forEach(word => {
+                                // let tmp = JSON.parse(word);
+                                // tmp.counter = 0;
+                                // word = JSON.stringify(tmp);
+                                wordsList.push(word);
+                            });
                         }
 
 

@@ -1,6 +1,7 @@
 import { onSnake, expandSnake, onSnake2 } from './snake.js';
 import { randomGridPosion } from './grid.js'
 //import { currentUser as user , currentCategory } from './game.js'
+import { reduseWordCounter, increaseWordCounter } from '../words_update.js'
 
 
 let food = getRandomFoodPosition();
@@ -28,8 +29,10 @@ let failSound = new Audio('/sounds/fail.wav');
 
 
 
-export function update(words, knownWords) {
+export function update(words, user) {
     if (onSnake(food)) {
+        if (!first_step)
+            increaseWordCounter(words[randomNum], user);
         expandSnake(EXPANSION_RATE);
         randomNum = getRandomNum(wordsLen);
 
@@ -54,6 +57,8 @@ export function update(words, knownWords) {
     else {
         if (onSnake2(demoFood) || onSnake2(demoFood2)) {
             setTimeout(updateHeartRate(), 200000);
+            if (!first_step)
+                reduseWordCounter(words[randomNum], user);
             // make a message
             // hart rate goes down in one
             // word countdown --
@@ -106,5 +111,4 @@ function updateHeartRate() {
     localStorage.setItem('heart_rate', heart_rate);
     if (heart_rate != 0)
         failSound.play();
-
 }

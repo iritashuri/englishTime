@@ -46,6 +46,7 @@ document.body.onkeyup = (e) => {
 
 function main(currentTime) {
     if (gameOver) {
+        updateUserInMongo();
         setTimeout(gameOverSound.play(), 200000);
         if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {
             window.location = '/games/snake';
@@ -65,7 +66,7 @@ window.requestAnimationFrame(main);
 
 function update() {
     updateSnake();
-    updateFood(categoryNotStudiedWords, categoryKnownWords);
+    updateFood(categoryNotStudiedWords.concat(getCategoryWords), user);
     checkForDeath();
     heartRate = localStorage.getItem('heart_rate');
 }
@@ -91,4 +92,8 @@ function getCategoryWords(type, aarray) {
     });
 }
 
+function updateUserInMongo() {
+    user = localStorage.getItem('current_user');
+
+}
 

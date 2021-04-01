@@ -13,7 +13,7 @@ const WordSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    translation:{
+    translation: {
         type: String,
         required: true
     }
