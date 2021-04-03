@@ -20,15 +20,16 @@ if (document.URL.includes('card-game')) {
 
   function restart_enemies(){
     enemies = [
-      { left: 200, top: 100 },
+      { left: 200, top: 100 ,word:0},
      // { left: 300, top: 100 },
      // { left: 400, top: 100 },
      // { left: 500, top: 100 },
-      { left: 600, top: 100 },
+      { left: 600, top: 100 ,word:0},
       //{ left: 700, top: 100 },
       //{ left: 800, top: 100 },
-      { left: 900, top: 100 },
+      { left: 900, top: 100 ,word:0},
   ];
+    choose_random_enemy();
   }
 
     document.onkeydown = function(e) {
@@ -71,12 +72,15 @@ if (document.URL.includes('card-game')) {
   }
 
   function drawEnemies() {
-      document.getElementById('enemies').innerHTML = ""
-      for(var i = 0 ; i < enemies.length ; i++ ) {
-          document.getElementById('enemies').innerHTML +=
-           `<div class='enemy' style='left:${enemies[i].left}px; top:${enemies[i].top}px'>`+user.name+`</div>`;
-        }
+    document.getElementById('enemies').innerHTML = ""
+    for(var i = 0 ; i < enemies.length ; i++ ) {
+      document.getElementById('enemies').innerHTML +=
+        `<div class='enemy' id=${'enemy-'+i} style='left:${enemies[i].left}px; top:${enemies[i].top}px'>${enemies[i].word}</div>`;
+    }
+    document.getElementById("enemies").style.color = "red";
   }
+     
+  
 
   function moveEnemies() {
       for(var i = 0 ; i < enemies.length ; i++ ) {
@@ -95,10 +99,8 @@ if (document.URL.includes('card-game')) {
               ) {
                   enemies.splice(enemy, 1);
                   missiles.splice(missile, 1);
-                  console.log(enemies)
-                  console.log(missiles)
                   score++;
-                  console.log(score);
+                  console.log("score: "+score);
 
               }
           }
@@ -123,15 +125,25 @@ if (document.URL.includes('card-game')) {
 
   }
 
-  function all_enemie_dead(){
+  function all_enemies_dead(){
     if(enemies.length==0){
       restart_enemies()
     }
   }
 
+  function choose_random_enemy(){
+    rand=Math.floor(Math.random() * enemies.length);
+    enemies[rand].word='bingo';
+    for (var i=0;i<enemies.length;i++){
+      if( enemies[i].word ==0){
+        enemies[i].word='asdad';
+      }
+    }
+  }
+
   function gameLoop() {
       var timeout= setTimeout(gameLoop, 50)
-      all_enemie_dead();
+      all_enemies_dead();
       moveMissiles();
       drawMissiles();
       moveEnemies();
@@ -143,6 +155,7 @@ if (document.URL.includes('card-game')) {
   var gameover=0;
   var score;
   var life;
+  var rand;
   start_game()
   alert("start game");
   gameLoop()
