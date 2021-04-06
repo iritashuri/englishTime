@@ -7,7 +7,9 @@ if (document.URL.includes('card-game')) {
 
   function start_game(){
     score=0;
+    document.getElementById("points").innerHTML =score;
     life=4;
+    document.getElementById("life").innerHTML =life-1;
      hero = {
         left: 575,
         top: 700
@@ -103,10 +105,12 @@ if (document.URL.includes('card-game')) {
             ) {
               if(enemies[enemy].word===real_word){
                 score++;
+                document.getElementById("points").innerHTML =score;
                 reset_game=1;
 
               }else{
                 life--;
+                document.getElementById("life").innerHTML =life-1;
                 console.log(life)
               }
                 enemies.splice(enemy, 1);
@@ -125,6 +129,7 @@ if (document.URL.includes('card-game')) {
       if(enemies[0].top > 650 && life>0){
         console.log('inside2')
         life--;
+        document.getElementById("life").innerHTML =life-1;
         restart_enemies();
         console.log("life: "+life);
       }
