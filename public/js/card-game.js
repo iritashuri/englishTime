@@ -221,9 +221,19 @@ function init_words(){
   var demo_words=[];
   var msg = new SpeechSynthesisUtterance();
 
-  alert("start game");
-  start_game()
-  gameLoop()
+
+  document.getElementById("speaker").addEventListener("click", function () {
+    window.speechSynthesis.speak(msg);
+  });
+
+  //alert("start game");
+document.getElementById("play").addEventListener("click", function () {
+    start_game()
+    gameLoop()
+
+});
+
+
 
 
 }
