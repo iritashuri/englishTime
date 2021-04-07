@@ -1,3 +1,5 @@
+import { reduseWordCounter, increaseWordCounter } from './words_update.js'
+
 if (document.URL.includes('card-game')) {
   user = JSON.parse(user);
   console.log(category);
@@ -145,6 +147,7 @@ if (document.URL.includes('card-game')) {
             ) {
               if(enemies[enemy].word===real_word.translation){
                 score++;
+                increaseWordCounter(real_word, user);
                 document.getElementById("points").innerHTML =score;
                 reset_game=1;
 
@@ -176,6 +179,7 @@ if (document.URL.includes('card-game')) {
 
       if(life<=0){
         alert(" כדי להתחיל מחדש OK הפסדת , לחץ");
+        update_db_user();
         clearTimeout(timeout);
         start_game();
         gameLoop();
@@ -217,7 +221,7 @@ function init_words(){
   }
 
   console.log("nums: "+words_index_in_db);
-  console.log("nums: "+words_4_game);
+  console.log("nums1: "+JSON.stringify(words_4_game));
   
   var real_word_index=Math.floor(Math.random() * words_4_game.length)
   real_word=words_4_game[real_word_index];
@@ -246,9 +250,16 @@ function init_words_from_db(){
   words_to_show=categoryNotStudiedWords.concat(categoryUnknownWords);
   console.log(words_to_show);
 }
+function update_db_user(){
 
+    var myquery = { email: user.email };
+    var newvalues = { $set: {words: user.words} };
+    db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+      if (err) throw err;
+      console.log("1 document updated"); 
+      db.close();
+    });
 
-
-
+}
 
 }

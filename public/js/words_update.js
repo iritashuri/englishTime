@@ -16,26 +16,26 @@ export function increaseWordCounter(word, user) {
 function counterChange(op, word, words_array, user) {
     let i = 0;
     for (const current_word in words_array) {
-        if (current_word.word === word.word) {
+        if (words_array[current_word].word === word.word) {
             if (op === '+') {
                 if (word.counter < 3) {
-                    current_word.counter++;
-                    if (current_word.counter === 3)
-                        moveWord(words_array, user.words.known, current_word, i);
+                    words_array[current_word].counter++;
+                    if (words_array[current_word].counter === 3)
+                        moveWord(words_array, user.words.known, words_array[current_word], i);
                 }
 
             }
 
             else {
                 if (word.counter >= 0) {
-                    current_word.counter--;
-                    if (current_word.counter === 0)
-                        moveWord(words_array, user.words.unknown, current_word, i);
+                    words_array[current_word].counter--;
+                    if (words_array[current_word].counter === 0)
+                        moveWord(words_array, user.words.unknown, words_array[current_word], i);
                 }
             }
 
             //update local storage
-            localStorage.setItem('current_user', user);
+            localStorage.setItem('current_user',JSON.stringify(user));
             return true;
         }
         i++;
