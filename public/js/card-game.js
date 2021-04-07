@@ -12,11 +12,8 @@ if (document.URL.includes('card-game')) {
     var categoryKnownWords = [];
     var categoryUnknownWords = [];
     var words_to_show=[];
-    var gameover=0;
     var score;
     var life;
-    var word_location;
-    var rand;
     var real_word;
     var demo_words=[];
     var msg = new SpeechSynthesisUtterance();
@@ -198,15 +195,11 @@ function init_words(){
   var words_index_in_db=[];
   var words_4_game=[];
   var rand=Math.floor(Math.random() * words_to_show.length);
-  console.log("0: "+rand);
   words_index_in_db.push(rand);
 
   var rand1=Math.floor(Math.random() * words_to_show.length);
-  console.log("1: "+rand1);
   var rand2=Math.floor(Math.random() * words_to_show.length);
-  console.log("2: "+rand2);
-  console.log(words_index_in_db.includes(rand1));
-  console.log(words_index_in_db.includes(rand2));
+
   while(words_index_in_db.includes(rand1) || words_index_in_db.includes(rand2)|| rand1==rand2){
      rand1=Math.floor(Math.random() * words_to_show.length);
      rand2=Math.floor(Math.random() * words_to_show.length);
@@ -217,12 +210,10 @@ function init_words(){
   for(var i=0;i<words_index_in_db.length;i++){
     words_4_game.push(words_to_show[words_index_in_db[i]]);
     enemies[i].word=words_4_game[i].translation;
-    console.log("?: "+words_4_game[i].translation);
   }
 
-  console.log("nums: "+words_index_in_db);
   console.log("nums1: "+JSON.stringify(words_4_game));
-  
+
   var real_word_index=Math.floor(Math.random() * words_4_game.length)
   real_word=words_4_game[real_word_index];
   localStorage.setItem("current_word:",real_word.translation);
