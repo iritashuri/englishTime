@@ -5,6 +5,46 @@ if (document.URL.includes('card-game')) {
   var missiles = [];
   var enemies=[];
 
+  
+    var categoryNotStudiedWords = [];
+    var categoryKnownWords = [];
+    var categoryUnknownWords = [];
+    var words_to_show=[];
+    var gameover=0;
+    var score;
+    var life;
+    var word_location;
+    var rand;
+    var real_word;
+    var demo_words=[];
+    var msg = new SpeechSynthesisUtterance();
+    init_words_from_db()
+  
+    document.getElementById("speaker").addEventListener("click", function () {
+      window.speechSynthesis.speak(msg);
+    });
+  
+    //alert("start game");
+  document.getElementById("play").addEventListener("click", function () {
+      start_game()
+      gameLoop()
+  
+  });
+
+
+  
+  function gameLoop() {
+    var timeout= setTimeout(gameLoop, 50)
+    all_enemies_dead();
+    moveMissiles();
+    drawMissiles();
+    moveEnemies();
+    check_game(timeout);
+    drawEnemies();
+    collisionDetection();
+  }
+  
+
   function start_game(){
     score=0;
     document.getElementById("points").innerHTML =score;
@@ -103,7 +143,7 @@ if (document.URL.includes('card-game')) {
                 missiles[missile].top <= (enemies[enemy].top + 50)  &&
                 missiles[missile].top >= enemies[enemy].top
             ) {
-              if(enemies[enemy].word===real_word){
+              if(enemies[enemy].word===real_word.translation){
                 score++;
                 document.getElementById("points").innerHTML =score;
                 reset_game=1;
@@ -147,46 +187,33 @@ if (document.URL.includes('card-game')) {
       restart_enemies()
     }
   }
-/*
-  function choose_random_enemy(){
-    init_words();
-    word_location=Math.floor(Math.random() * enemies.length);
-    enemies[word_location].word=real_word;
-    for(var j=0;j<enemies.length-1;j++){
-      for (var i=0;i<enemies.length;i++){
-        if(enemies[i].word !== 0){
-          enemies[i].word=demo_words[j];
-        }
-      }
-    }
-  }
-*/
+
+
 function init_words(){
   demo_words=[];
-  var word_list=['bingo','afeka','shit','fun','day','me','you',"go","no","maybe"];
   var words_index_in_db=[];
   var words_4_game=[];
-  var rand=Math.floor(Math.random() * word_list.length);
+  var rand=Math.floor(Math.random() * words_to_show.length);
   console.log("0: "+rand);
   words_index_in_db.push(rand);
 
-  var rand1=Math.floor(Math.random() * word_list.length);
+  var rand1=Math.floor(Math.random() * words_to_show.length);
   console.log("1: "+rand1);
-  var rand2=Math.floor(Math.random() * word_list.length);
+  var rand2=Math.floor(Math.random() * words_to_show.length);
   console.log("2: "+rand2);
   console.log(words_index_in_db.includes(rand1));
   console.log(words_index_in_db.includes(rand2));
   while(words_index_in_db.includes(rand1) || words_index_in_db.includes(rand2)|| rand1==rand2){
-     rand1=Math.floor(Math.random() * word_list.length);
-     rand2=Math.floor(Math.random() * word_list.length);
+     rand1=Math.floor(Math.random() * words_to_show.length);
+     rand2=Math.floor(Math.random() * words_to_show.length);
 
   }
   words_index_in_db.push(rand1,rand2);
 
   for(var i=0;i<words_index_in_db.length;i++){
-    words_4_game.push(word_list[words_index_in_db[i]]);
-    enemies[i].word=words_4_game[i];
-    console.log("?: "+words_4_game[i]);
+    words_4_game.push(words_to_show[words_index_in_db[i]]);
+    enemies[i].word=words_4_game[i].translation;
+    console.log("?: "+words_4_game[i].translation);
   }
 
   console.log("nums: "+words_index_in_db);
@@ -194,49 +221,32 @@ function init_words(){
   
   var real_word_index=Math.floor(Math.random() * words_4_game.length)
   real_word=words_4_game[real_word_index];
-  msg.text=real_word;
+  localStorage.setItem("current_word:",real_word.translation);
+  msg.text=real_word.word;
   window.speechSynthesis.speak(msg);
-  console.log("real: "+real_word);
-
-  /*console.log("real: "+real_word);
-    for (var i=0;i<enemies.length-1;i++){
-      //demo_words.splice(i,0,choose_random_word_from_db());
-      demo_words.push(word_list[words_index_in_db[i+1]])
-    }*/
+  console.log("real: "+real_word.word+real_word.translation);
     console.log("demo: "+demo_words);
 }
 
-  function gameLoop() {
-      var timeout= setTimeout(gameLoop, 50)
-      all_enemies_dead();
-      moveMissiles();
-      drawMissiles();
-      moveEnemies();
-      check_game(timeout);
-      drawEnemies();
-      collisionDetection();
-  }
-
-  var gameover=0;
-  var score;
-  var life;
-  var word_location;
-  var rand;
-  var real_word;
-  var demo_words=[];
-  var msg = new SpeechSynthesisUtterance();
 
 
-  document.getElementById("speaker").addEventListener("click", function () {
-    window.speechSynthesis.speak(msg);
-  });
+  function getCategoryWords(type, aarray) {
+    const current_user = JSON.parse(localStorage.getItem('current_user'));
+    console.log(current_user.words);
+    current_user.words[type].forEach(word => {
+        if (word.level === current_user.level && word.catagory === localStorage.getItem('category'))
+            aarray.push(word);
+    });
+}
 
-  //alert("start game");
-document.getElementById("play").addEventListener("click", function () {
-    start_game()
-    gameLoop()
+function init_words_from_db(){
+  getCategoryWords('unknown', categoryUnknownWords);
+  getCategoryWords('known', categoryKnownWords);
+  getCategoryWords('not_studied', categoryNotStudiedWords);
+  words_to_show=categoryNotStudiedWords.concat(categoryUnknownWords);
+  console.log(words_to_show);
+}
 
-});
 
 
 
