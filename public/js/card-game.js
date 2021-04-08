@@ -176,7 +176,7 @@ if (document.URL.includes('card-game')) {
 
       if(life<=0){
         alert(" כדי להתחיל מחדש OK הפסדת , לחץ");
-        update_db_user();
+        test();
         clearTimeout(timeout);
         start_game();
         gameLoop();
@@ -222,9 +222,6 @@ function init_words(){
   console.log("real: "+real_word.word+real_word.translation);
     console.log("demo: "+demo_words);
 }
-
-
-
   function getCategoryWords(type, aarray) {
     const current_user = JSON.parse(localStorage.getItem('current_user'));
     console.log(current_user.words);
@@ -253,4 +250,28 @@ function update_db_user(){
 
 }
 
+function test(){
+  /*
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", '/games/todos', true);
+  //Send the proper header information along with the request
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(JSON.stringify(user));
+  */
+ user = localStorage.getItem('current_user');
+
+
+    const option = {
+      method: 'POST',
+      Headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    };
+      
+      fetch('/games/todos',option);
+    
+
+
+  }
 }

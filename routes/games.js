@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-
 const { ensureAuthenticated } = require('../config/auth');
 
 // Load User  and Word model
@@ -56,6 +55,35 @@ router.get('/card-game', ensureAuthenticated, (req, res, next) =>
         category: req.body.category
     })
 );
+
+// Cards game
+router.post('/todos', ensureAuthenticated, (req, res, next) =>{
+   //console.log((req.body));
+var user=req.user;
+   const updatedUser = new User({
+    name: user.name,
+    email: user.email,
+    password: user.passport,
+    level: req.user.level,
+    words:  req.user.words
+
+});
+//    User.findOne({email: email}).then(user => {
+//         user.updateOne()
+//    })
+var myquery = { email: user.email };
+
+   //console.log(typeof user);
+   
+   var newvalues = { $set: {words: user.words} };
+   User.updateOne(myquery, newvalues, function(err, res) {
+     if (err) throw err;
+     console.log("1 document updated"); 
+   //  User.close();
+   });
+}
+);
+
 
 
 
