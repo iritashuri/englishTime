@@ -56,35 +56,23 @@ router.get('/card-game', ensureAuthenticated, (req, res, next) =>
     })
 );
 
-// Cards game
-router.post('/todos', ensureAuthenticated, (req, res, next) =>{
-   //console.log((req.body));
-var user=req.user;
-   const updatedUser = new User({
-    name: user.name,
-    email: user.email,
-    password: user.passport,
-    level: req.user.level,
-    words:  req.user.words
+router.post('/todos', ensureAuthenticated, (req, res, next) => {
+    //console.log((req.body));
+    var current_user = req.body;
+    var myquery = { email: current_user.email };
 
-});
-//    User.findOne({email: email}).then(user => {
-//         user.updateOne()
-//    })
-var myquery = { email: user.email };
+    //console.log(typeof user);
 
-   //console.log(typeof user);
-   
-   var newvalues = { $set: {words: user.words} };
-   User.updateOne(myquery, newvalues, function(err, res) {
-     if (err) throw err;
-     console.log("1 document updated"); 
-   //  User.close();
-   });
+    var newvalues = { $set: { words: current_user.words } };
+
+    User.updateOne(myquery, newvalues).then((obj) => {
+        console.log('Updated - ' + JSON.stringify(obj));
+        res.redirect('orders')
+    })
+        .catch((err) => {
+            console.log('Error: ' + err);
+        })
 }
 );
-
-
-
 
 module.exports = router;

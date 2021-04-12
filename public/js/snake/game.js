@@ -93,7 +93,15 @@ function getCategoryWords(type, aarray) {
 }
 
 function updateUserInMongo() {
-    user = localStorage.getItem('current_user');
-
+    var current_user = localStorage.getItem('current_user');
+    const option = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: current_user
+    };
+    fetch('/games/todos', option);
 }
 
