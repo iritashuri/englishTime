@@ -74,5 +74,4 @@ router.post('/todos', ensureAuthenticated, (req, res, next) => {
         })
 }
 );
-
 module.exports = router;
