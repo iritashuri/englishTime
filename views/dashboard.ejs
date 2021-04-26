@@ -9,7 +9,6 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item  my-item" href="#">פרטי משתמש</a>
                     <a class="dropdown-item my-item" href="/users/logout">התנתק</a>
-                    <a class="dropdown-item my-item" href="#">Something else here</a>
                 </div>
             </li>
             <li class="nav-item tablinks">
@@ -32,7 +31,7 @@
     <div class="tree">
         <ul>
             <li>
-                <div class="level-1 step-1">
+                <div class="level-1 step-1 leaves">
                     <button class="category-btn" tabindex="0" class="btn" role="button" data-toggle="popover"
                         data-trigger="focus" data-html="true" data-container="body" data-placement="left"
                         id="personality" onclick="saveCategory(id)">
@@ -41,18 +40,21 @@
                 </div>
                 <ul>
                     <li>
-                        <div class="level-2"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
-                                data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                                id="animals" onclick="saveCategory(id)"> חיות </button></div>
+                        <div class="level-2 leaves">
+                            <button tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus"
+                                data-html="true" data-container="body" data-placement="left" id="animals"
+                                onclick="saveCategory(id)"> חיות
+                            </button>
+                        </div>
                         <ul>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="clothes"
                                         onclick="saveCategory(id)"> בגדים </button></div>
                             </li>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="nature"
                                         onclick="saveCategory(id)"> טבע </button></div>
@@ -60,18 +62,18 @@
                         </ul>
                     </li>
                     <li>
-                        <div class="level-2"><button tabindex="0" class="btn" role="button" data-toggle="popover"
-                                data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                                id="food" onclick="saveCategory(id)"> אוכל </button></div>
+                        <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
+                                data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
+                                data-placement="left" id="food" onclick="saveCategory(id)"> אוכל </button></div>
                         <ul>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="education"
                                         onclick="saveCategory(id)"> חינוך </button></div>
                             </li>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="actions"
                                         onclick="saveCategory(id)"> פעולות </button></div>
@@ -89,45 +91,47 @@
     <div class="tree">
         <ul>
             <li>
-                <div class="level-1 step-1"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
+                <div class="level-1 step-1 leaves"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
                         data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                        id="personality" onclick="saveCategory(id)"> אישיות </button></div>
+                        id="personality" onclick="saveCategory(id)" disabled> אישיות </button></div>
                 <ul>
                     <li>
-                        <div class="level-2"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
-                                data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                                id="animals" onclick="saveCategory(id)"> חיות </button></div>
+                        <div class="level-2 leaves"> <button tabindex="0" class="btn" role="button"
+                                data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
+                                data-placement="left" id="animals" onclick="saveCategory(id)" disabled> חיות </button>
+                        </div>
                         <ul>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="clothes"
-                                        onclick="saveCategory(id)"> בגדים </button></div>
+                                        onclick="saveCategory(id)" disabled> בגדים </button></div>
                             </li>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="nature"
-                                        onclick="saveCategory(id)"> טבע </button></div>
+                                        onclick="saveCategory(id)" disabled> טבע </button></div>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <div class="level-2"><button tabindex="0" class="btn" role="button" data-toggle="popover"
-                                data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                                id="food" onclick="saveCategory(id)"> אוכל </button></div>
+                        <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
+                                data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
+                                data-placement="left" id="food" onclick="saveCategory(id)" disabled> אוכל </button>
+                        </div>
                         <ul>
                             <li>
-                                <div class="level-3"><button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="education"
-                                        onclick="saveCategory(id)"> חינוך </button></div>
+                                        onclick="saveCategory(id)" disabled> חינוך </button></div>
                             </li>
                             <li>
-                                <div class="level-3"> <button tabindex="0" class="btn" role="button"
+                                <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="actions"
-                                        onclick="saveCategory(id)"> פעולות </button></div>
+                                        onclick="saveCategory(id)" disabled> פעולות </button></div>
 
                             </li>
                         </ul>

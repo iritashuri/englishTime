@@ -1,13 +1,14 @@
 
 user = JSON.parse(user);
+// Set games counter to 0;
+localStorage.setItem('gamesCounter', 0);
 // console.log(category);
 import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, snakeIntersection } from './snake.js';
 import { update as updateFood, draw as drawFood } from './food.js';
 import { outsideGrid } from './grid.js'
 import { drowHearts } from './game-page.js'
+import { categoryAndLevelStateMachine } from '../words_update.js'
 
-// export const currentUser = JSON.parse(user);
-// export const currentCategory = category;
 
 let lastRenderTime = 0;
 let gameOver = false;
@@ -46,6 +47,7 @@ document.body.onkeyup = (e) => {
 
 function main(currentTime) {
     if (gameOver) {
+        categoryAndLevelStateMachine(localStorage.getItem('current_user'));
         updateUserInMongo();
         setTimeout(gameOverSound.play(), 200000);
         if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {

@@ -22,6 +22,19 @@ if (document.URL.includes('dashboard')) {
         }
     });
     localStorage.setItem("current_user", JSON.stringify(user));
+
+    enableCategories();
+}
+
+
+function enableCategories() {
+    $('.leaves').each(function (i, obj) {
+        // console.log(obj.childNodes[1].id);
+        if (!user.categories.includes(obj.childNodes[1].id)) {
+            $('#' + obj.childNodes[1].id).prop("disabled", true);
+        }
+
+    });
 }
 
 function start(level) {
@@ -49,6 +62,7 @@ function openLevels(evt, level) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(level).style.display = "block";
     evt.currentTarget.className += " active";
+
 }
 
 function saveCategory(category) {
