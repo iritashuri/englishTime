@@ -33,9 +33,10 @@ function counterChange(op, word, words_array, user) {
                         moveWord(words_array, user.words.unknown, words_array[current_word], i);
                 }
             }
-
-            //update local storage
-            localStorage.setItem('current_user',JSON.stringify(user));
+            // Check how many words was success in the category and check if its was finished  
+            // Give a message accordingley  
+            // Update local storage
+            localStorage.setItem('current_user', JSON.stringify(user));
             return true;
         }
         i++;

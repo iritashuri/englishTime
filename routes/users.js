@@ -80,6 +80,7 @@ router.post('/register', (req, res) => {
                                 known: [],
                                 unknown: []
                             },
+                            categories: ['personality']
                         });
                         // Hash password
                         bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {

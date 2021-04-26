@@ -22,6 +22,10 @@ const UserSchema = new mongoose.Schema({
         type: Map,
         of: Array,
     },
+    categories: {
+        type: Array,
+        of: String
+    },
     date: {
         type: Date,
         default: Date.now
