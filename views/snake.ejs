@@ -1,12 +1,15 @@
 <table>
     <tr id="game-page">
         <td>
-            <div id="game-board">
+            <div>
+                <input id="speaker" type=image class="img" src="/img/speaker.png">
             </div>
         </td>
-        <div class="message">
-            <span> &times;
-        </div>
+        <td>
+            <div id="game-board">
+
+            </div>
+        </td>
         <td id="other">
             <div>
                 <div id="heart-rate"></div>
@@ -38,13 +41,12 @@
                     </p>
                 </div>
             </div>
-            <div>
-                <input id="speaker" type=image class="img" src="/img/speaker.png">
-            </div>
+            <h1 id="message">
+                hi
+            </h1>
         </td>
     </tr>
 </table>
-
 
 <script>
     var user = '<%- JSON.stringify(user) %>';

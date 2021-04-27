@@ -64,6 +64,10 @@ body {
 #speaker {
   width: 100px;
   height: 100px;
-  margin-top: 200px;
-  margin-right: 70px;
+  left: 0%;
+  margin-right: 10px;
+}
+
+#message {
+  display: none;
 }

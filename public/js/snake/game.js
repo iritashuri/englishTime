@@ -1,7 +1,8 @@
 
 user = JSON.parse(user);
 // Set games counter to 0;
-localStorage.setItem('gamesCounter', 0);
+localStorage.setItem('gamesCounter', 1);
+localStorage.setItem('current_user', JSON.stringify(user));
 // console.log(category);
 import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, snakeIntersection } from './snake.js';
 import { update as updateFood, draw as drawFood } from './food.js';
@@ -45,12 +46,15 @@ document.body.onkeyup = (e) => {
 
 function main(currentTime) {
     if (gameOver) {
+        gameOverSound.play();
         categoryAndLevelStateMachine(JSON.parse(localStorage.getItem('current_user')));
         updateUserInMongo();
-        setTimeout(gameOverSound.play(), 200000);
-        if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {
-            window.location = '/games/snake';
-        }
+        setTimeout(function () {
+            if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {
+                window.location = '/games/snake';
+            }
+        }, 500);
+
         return;
     }
     window.requestAnimationFrame(main);
@@ -66,7 +70,7 @@ window.requestAnimationFrame(main);
 
 function update() {
     updateSnake();
-    updateFood(categoryNotStudiedWords.concat(getCategoryWords), user);
+    updateFood(categoryNotStudiedWords.concat(categoryUnknownWords), user);
     checkForDeath();
     heartRate = localStorage.getItem('heart_rate');
 }
@@ -83,12 +87,12 @@ function checkForDeath() {
     gameOver = outsideGrid(getSnakeHead()) || snakeIntersection() || localStorage.getItem('heart_rate') == 0;
 }
 
-function getCategoryWords(type, aarray) {
+function getCategoryWords(type, array) {
     const current_user = JSON.parse(localStorage.getItem('current_user'));
     console.log(current_user.words);
     current_user.words[type].forEach(word => {
         if (word.level === current_user.level && word.catagory === localStorage.getItem('category'))
-            aarray.push(word);
+            array.push(word);
     });
 }
 

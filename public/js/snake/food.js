@@ -15,6 +15,7 @@ let demoFood2 = getRandomFoodPosition();
 while ((food.x === demoFood2.x && food.y === demoFood2.y) || (demoFood.x === demoFood2.x && demoFood.y === demoFood2.y)) {
     demoFood = getRandomFoodPosition();
 }
+let eatingSound = new Audio('/sounds/eating.mp3');
 
 
 const EXPANSION_RATE = 1;
@@ -29,11 +30,19 @@ let first_step = localStorage.getItem('first_step');
 
 let failSound = new Audio('/sounds/fail.wav');
 
-
+let counter = 0;
 
 export function update(words, user) {
     if (onSnake(food)) {
-        goodJobMessage();
+        eatingSound.play();
+        if (counter == 0)
+            counter++;
+        if (counter <= 1) {
+            goodJobMessage();
+            counter++;
+        } else if (counter > 1) {
+            ExalentMessage();
+        }
         if (!first_step)
             increaseWordCounter(words[randomNum], user);
         expandSnake(EXPANSION_RATE);
@@ -47,25 +56,22 @@ export function update(words, user) {
         while (demoFoodRandomNum2 === demoFoodRandomNum || demoFoodRandomNum2 === randomNum)
             demoFoodRandomNum2 = getRandomNum(wordsLen);
 
-
-        console.log(first_step);
-
         first_step = false;
         localStorage.setItem('first_step', first_step);
         // speak 
         msg.text = words[randomNum].word;
-        window.speechSynthesis.speak(msg);
+        setTimeout(function () { window.speechSynthesis.speak(msg) }, 500);
         food = getRandomFoodPosition();
+        demoFood = getRandomFoodPosition();
+        demoFood2 = getRandomFoodPosition();
     }
     else {
         if (onSnake2(demoFood) || onSnake2(demoFood2)) {
-            setTimeout(updateHeartRate(), 200000);
+            updateHeartRate();
             if (!first_step)
                 reduseWordCounter(words[randomNum], user);
-
-            // make a message
-            // hart rate goes down in one
-            // word countdown --
+            first_step = false;
+            localStorage.setItem('first_step', first_step);
         }
     }
 }
