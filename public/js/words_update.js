@@ -1,6 +1,6 @@
 
 export function categoryAndLevelStateMachine(user) {
-
+    let gamesCounter = localStorage.getItem('gamesCounter');
     // Get all category known words
     let knownCategory = [];
     const currentCategory = localStorage.getItem('category');
@@ -76,8 +76,7 @@ export function increaseWordCounter(word, user) {
 
 
 function counterChange(op, word, words_array, user) {
-    // increase game counter by 1 and set it back in local storage
-    gamesCounter = localStorage.getItem('gamesCounter');
+
     //localStorage.setItem('gamesCounter', gamesCounter);
     let i = 0;
     for (const current_word in words_array) {

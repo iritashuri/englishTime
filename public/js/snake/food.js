@@ -2,6 +2,8 @@ import { onSnake, expandSnake, onSnake2 } from './snake.js';
 import { randomGridPosion } from './grid.js'
 //import { currentUser as user , currentCategory } from './game.js'
 import { reduseWordCounter, increaseWordCounter } from '../words_update.js'
+import { goodJobMessage, ExalentMessage, keepGoingMessage } from '../messages.js'
+
 
 
 let food = getRandomFoodPosition();
@@ -31,6 +33,7 @@ let failSound = new Audio('/sounds/fail.wav');
 
 export function update(words, user) {
     if (onSnake(food)) {
+        goodJobMessage();
         if (!first_step)
             increaseWordCounter(words[randomNum], user);
         expandSnake(EXPANSION_RATE);
@@ -59,6 +62,7 @@ export function update(words, user) {
             setTimeout(updateHeartRate(), 200000);
             if (!first_step)
                 reduseWordCounter(words[randomNum], user);
+
             // make a message
             // hart rate goes down in one
             // word countdown --

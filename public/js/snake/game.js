@@ -23,8 +23,6 @@ let heartRate = 3;
 localStorage.setItem('heart_rate', heartRate);
 let gameOverSound = new Audio('/sounds/game-over.wav');
 
-
-
 // Find all words in the same category and level
 getCategoryWords('not_studied', categoryNotStudiedWords);
 getCategoryWords('unknown', categoryUnknownWords);
@@ -47,7 +45,7 @@ document.body.onkeyup = (e) => {
 
 function main(currentTime) {
     if (gameOver) {
-        categoryAndLevelStateMachine(localStorage.getItem('current_user'));
+        categoryAndLevelStateMachine(JSON.parse(localStorage.getItem('current_user')));
         updateUserInMongo();
         setTimeout(gameOverSound.play(), 200000);
         if (confirm(' כדי להתחיל מחדש OK הפסדת , לחץ ')) {
