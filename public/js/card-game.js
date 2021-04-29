@@ -1,4 +1,5 @@
 import { reduseWordCounter, increaseWordCounter } from './words_update.js'
+import { goodJobMessage, ExalentMessage, keepGoingMessage } from './messages.js'
 
 if (document.URL.includes('card-game')) {
   user = JSON.parse(user);
@@ -7,6 +8,7 @@ if (document.URL.includes('card-game')) {
   var missiles = [];
   var enemies = [];
 
+  let counter = 0;
 
   var categoryNotStudiedWords = [];
   var categoryKnownWords = [];
@@ -17,7 +19,11 @@ if (document.URL.includes('card-game')) {
   var real_word;
   var demo_words = [];
   var msg = new SpeechSynthesisUtterance();
-  init_words_from_db()
+  init_words_from_db();
+  let failSound = new Audio('/sounds/fail.wav');
+  let gameOverSound = new Audio('/sounds/game-over.wav');
+  let shootSound = new Audio('/sounds/shoot.wav');
+
 
   document.getElementById("speaker").addEventListener("click", function () {
     window.speechSynthesis.speak(msg);
@@ -143,13 +149,26 @@ if (document.URL.includes('card-game')) {
           missiles[missile].top >= enemies[enemy].top
         ) {
           if (enemies[enemy].word === real_word.translation) {
+            if (counter == 0)
+              counter++;
+            if (counter <= 1) {
+              goodJobMessage();
+              counter++;
+            } else if (counter > 1) {
+              ExalentMessage();
+            }
+            shootSound.play();
             score++;
             increaseWordCounter(real_word, user);
             document.getElementById("points").innerHTML = score;
             reset_game = 1;
 
           } else {
+            if (life >= 0)
+              failSound.play();
+            keepGoingMessage();
             life--;
+            reduseWordCounter(real_word, user);
             document.getElementById("life").innerHTML = life - 1;
             console.log(life)
           }
@@ -167,19 +186,24 @@ if (document.URL.includes('card-game')) {
 
   function check_game(timeout) {
     if (enemies[0].top > 650 && life > 0) {
-      console.log('inside2')
+      if (life >= 0)
+        failSound.play();
       life--;
       document.getElementById("life").innerHTML = life - 1;
       restart_enemies();
       console.log("life: " + life);
     }
 
-    if (life <= 0) {
-      alert(" כדי להתחיל מחדש OK הפסדת , לחץ");
-      test();
-      clearTimeout(timeout);
-      start_game();
-      gameLoop();
+    if (life < 1) {
+      gameOverSound.play();
+      setTimeout(function () {
+        alert(" כדי להתחיל מחדש OK הפסדת , לחץ");
+        test();
+        clearTimeout(timeout);
+        start_game();
+        gameLoop();
+      }, 500);
+
     }
   }
 

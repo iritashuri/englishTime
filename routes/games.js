@@ -74,4 +74,12 @@ router.post('/todos', ensureAuthenticated, (req, res, next) => {
         })
 }
 );
+
+
+// Settings
+router.post('/settings', ensureAuthenticated, (req, res, next) =>
+    res.render('settings', {
+        user: req.user,
+    })
+);
 module.exports = router;

@@ -67,6 +67,7 @@ export function update(words, user) {
     }
     else {
         if (onSnake2(demoFood) || onSnake2(demoFood2)) {
+            keepGoingMessage();
             updateHeartRate();
             if (!first_step)
                 reduseWordCounter(words[randomNum], user);

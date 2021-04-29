@@ -76,8 +76,8 @@ body {
 .tree button {
   border-radius: 80%;
   border-color: rgb(251, 253, 130);
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   background-color: rgb(251, 253, 130);
   box-shadow: 1px 2px #f36a6a;
   font-size: 20px;
@@ -145,4 +145,8 @@ body {
 /* Category */
 .category {
   background-color: darksalmon;
+}
+
+#settings-btn {
+  margin-top: 10px;
 }

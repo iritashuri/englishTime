@@ -7,7 +7,10 @@
                     <%= user.name %>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item  my-item" href="#">פרטי משתמש</a>
+                    <form action="/games/settings" method="POST">
+                        <button type="submit" class="dropdown-item  my-item" id="settings-btn">פרטי
+                            משתמש</button></br></br>
+                    </form>
                     <a class="dropdown-item my-item" href="/users/logout">התנתק</a>
                 </div>
             </li>
@@ -35,6 +38,7 @@
                     <button class="category-btn" tabindex="0" class="btn" role="button" data-toggle="popover"
                         data-trigger="focus" data-html="true" data-container="body" data-placement="left"
                         id="personality" onclick="saveCategory(id)">
+                        <img src="/img/personality.png"><br>
                         אישיות
                     </button>
                 </div>
@@ -43,7 +47,8 @@
                         <div class="level-2 leaves">
                             <button tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus"
                                 data-html="true" data-container="body" data-placement="left" id="animals"
-                                onclick="saveCategory(id)"> חיות
+                                onclick="saveCategory(id)">
+                                <img src="/img/animal.png"><br> חיות
                             </button>
                         </div>
                         <ul>
@@ -51,32 +56,52 @@
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="clothes"
-                                        onclick="saveCategory(id)"> בגדים </button></div>
+                                        onclick="saveCategory(id)">
+                                        <img src="/img/clothes.png"><br>
+                                        בגדים
+                                    </button>
+                                </div>
                             </li>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="nature"
-                                        onclick="saveCategory(id)"> טבע </button></div>
+                                        onclick="saveCategory(id)">
+                                        <img src="/img/nature.png"><br>
+                                        טבע
+                                    </button>
+                                </div>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                 data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
-                                data-placement="left" id="food" onclick="saveCategory(id)"> אוכל </button></div>
+                                data-placement="left" id="food" onclick="saveCategory(id)">
+                                <img src="/img/food.png"><br>
+                                אוכל
+                            </button>
+                        </div>
                         <ul>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="education"
-                                        onclick="saveCategory(id)"> חינוך </button></div>
+                                        onclick="saveCategory(id)">
+                                        <img src="/img/education.png"><br>
+                                        חינוך
+                                    </button>
+                                </div>
                             </li>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="actions"
-                                        onclick="saveCategory(id)"> פעולות </button></div>
+                                        onclick="saveCategory(id)">
+                                        <img src="/img/activity.png"><br>
+                                        פעולות
+                                    </button>
+                                </div>
                             </li>
                         </ul>
                     </li>
@@ -93,45 +118,66 @@
             <li>
                 <div class="level-1 step-1 leaves"> <button tabindex="0" class="btn" role="button" data-toggle="popover"
                         data-trigger="focus" data-html="true" data-container="body" data-placement="left"
-                        id="personality" onclick="saveCategory(id)" disabled> אישיות </button></div>
+                        id="personality" onclick="saveCategory(id)" disabled>
+                        <img src="/img/personality.png"><br>אישיות
+                    </button>
+                </div>
                 <ul>
                     <li>
                         <div class="level-2 leaves"> <button tabindex="0" class="btn" role="button"
                                 data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
-                                data-placement="left" id="animals" onclick="saveCategory(id)" disabled> חיות </button>
+                                data-placement="left" id="animals" onclick="saveCategory(id)" disabled>
+                                <img src="/img/animal.png"><br>
+                                חיות
+                            </button>
                         </div>
                         <ul>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="clothes"
-                                        onclick="saveCategory(id)" disabled> בגדים </button></div>
+                                        onclick="saveCategory(id)" disabled> <img src="/img/clothes.png"><br>
+                                        בגדים
+                                    </button>
+                                </div>
                             </li>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="nature"
-                                        onclick="saveCategory(id)" disabled> טבע </button></div>
+                                        onclick="saveCategory(id)" disabled><img src="/img/nature.png"><br>
+                                        טבע
+                                    </button>
+                                </div>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                 data-toggle="popover" data-trigger="focus" data-html="true" data-container="body"
-                                data-placement="left" id="food" onclick="saveCategory(id)" disabled> אוכל </button>
+                                data-placement="left" id="food" onclick="saveCategory(id)" disabled><img
+                                    src="/img/food.png"><br>
+                                אוכל
+                            </button>
                         </div>
                         <ul>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="education"
-                                        onclick="saveCategory(id)" disabled> חינוך </button></div>
+                                        onclick="saveCategory(id)" disabled> <img src="/img/education.png"><br>
+                                        חינוך
+                                    </button>
+                                </div>
                             </li>
                             <li>
                                 <div class="level-3 leaves"> <button tabindex="0" class="btn" role="button"
                                         data-toggle="popover" data-trigger="focus" data-html="true"
                                         data-container="body" data-placement="left" id="actions"
-                                        onclick="saveCategory(id)" disabled> פעולות </button></div>
+                                        onclick="saveCategory(id)" disabled> <img src="/img/activity.png"><br>
+                                        פעולות
+                                    </button>
+                                </div>
 
                             </li>
                         </ul>
@@ -149,11 +195,11 @@
     </form>
     <form action="/games/snake" method="POST">
         <input id="snake-category" name="category" type="hidden" value="">
-        <button type="submit">משחק 1</button></br></br>
+        <button type="submit"> סנייק</button></br></br>
     </form>
     <form action="/games/card-game" method="POST">
         <input id="card-game-category" name="category" type="hidden" value="">
-        <button type="submit">משחק 2</button></br></br>
+        <button type="submit"> יריות</button></br></br>
     </form>
 </div>
 
