@@ -127,7 +127,8 @@ if (document.URL.includes('card-game')) {
       document.getElementById('enemies').innerHTML +=
         `<div class='enemy' id=${'enemy-' + i} style='left:${enemies[i].left}px; top:${enemies[i].top}px'>${enemies[i].word}</div>`;
     }
-    document.getElementById("enemies").style.color = "red";
+    document.getElementById("enemies").style.color = "white";
+    document.getElementById("enemies").style.fontSize = "x-large";
   }
 
 
