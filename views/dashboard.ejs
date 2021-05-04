@@ -6,12 +6,12 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <%= user.name %>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right my-menue" aria-labelledby="navbarDropdownMenuLink">
                     <form action="/games/settings" method="POST">
                         <button type="submit" class="dropdown-item  my-item" id="settings-btn">פרטי
                             משתמש</button></br></br>
                     </form>
-                    <a class="dropdown-item my-item" href="/users/logout">התנתק</a>
+                    <a class="dropdown-item my-item" id="logout-btn" href="/users/logout">התנתק</a>
                 </div>
             </li>
             <li class="nav-item tablinks">
@@ -188,18 +188,18 @@
     </div>
 </div>
 
-<div id="popover-content" class="hide">
+<div id="popover-content" class="hide" style=" background-color: rgb(6, 245, 225)">
     <form action="/games/cards" method="POST">
         <input id="cards-category" name="category" type="hidden" value="">
-        <button type="submit">כרטיסיות לימוד</button></br></br>
+        <button class="my-btn" type="submit">כרטיסיות לימוד</button></br></br>
     </form>
     <form action="/games/snake" method="POST">
         <input id="snake-category" name="category" type="hidden" value="">
-        <button type="submit"> סנייק</button></br></br>
+        <button class="my-btn" type="submit"> סנייק</button></br></br>
     </form>
     <form action="/games/card-game" method="POST">
         <input id="card-game-category" name="category" type="hidden" value="">
-        <button type="submit"> יריות</button></br></br>
+        <button class="my-btn" type="submit"> יריות</button></br></br>
     </form>
 </div>
 

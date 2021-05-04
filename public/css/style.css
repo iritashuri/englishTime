@@ -148,5 +148,24 @@ body {
 }
 
 #settings-btn {
-  margin-top: 10px;
+  font-family: arial, verdana, tahoma;
+  font-size: 20px;
+}
+
+#logout-btn {
+  font-family: arial, verdana, tahoma;
+  font-size: 20px;
+}
+
+.my-btn {
+  background-color: tomato;
+  border-radius: 5px;
+  border-color: #f36a6a;
+  height: 50px;
+  width: 80px;
+}
+
+#my-menue {
+  width: 300px;
+  background-color: rgb(6, 245, 225);
 }
