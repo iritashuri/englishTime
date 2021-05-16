@@ -4,8 +4,45 @@
 
 <body>
 
-    <%= user.name %>
+    <nav class="top-bar navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle user-name" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= user.name %>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right my-menue" aria-labelledby="navbarDropdownMenuLink">
+                        <form action="/games/settings" method="POST">
 
+                        </form>
+                        <a class="dropdown-item my-item" id="logout-btn" href="/users/logout">התנתק</a>
+                    </div>
+                </li>
+                <li class="logo">
+                    <h1>זמן אנגלית</h1>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="user-details">
+        <h1>שם משתמש:
+            <%= user.name %>
+        </h1>
+        <br>
+        <h1><%= user.email %> :אימייל
+        </h1>
+        <br>
+        <h1><%= user.level %> :שלב
+            <br>
+        </h1>
+        <br>
+        <h1><%= user.categories %>
+            :קטוגוריות פתוחות ללמידה
+        </h1>
+
+    </div>
 </body>
 
 </html>

@@ -169,3 +169,13 @@ body {
   width: 300px;
   background-color: rgb(6, 245, 225);
 }
+
+#user-details {
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: teal;
+  border-radius: 10px;
+  margin-top: 200px;
+  padding: 20px;
+  text-align: right;
+}
